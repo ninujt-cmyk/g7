@@ -25,7 +25,7 @@ import { LoyaltyBadge } from '@/components/loyalty/LoyaltyBadge';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
+import { cn, format } from '@/lib/utils';
 
 /**
  * G7 Hotels Homepage
@@ -489,7 +489,7 @@ export default function HomePage() {
                           : `$${offer.discount.value} OFF`}
                       </Badge>
                       <span className="text-sm text-g7-charcoal/60">
-                        Valid until {new Date(offer.validUntil).toLocaleDateString()}
+                        Valid until {format(new Date(offer.validUntil), 'MMM dd, yyyy')}
                       </span>
                     </div>
                     <h3 className="font-serif text-2xl text-g7-charcoal mb-3">{offer.name}</h3>

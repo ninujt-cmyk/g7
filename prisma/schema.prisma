@@ -1,8 +1,5 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// G7 Hotels - Complete Prisma Schema
+// Luxury Hotel Management System
 
 generator client {
   provider = "prisma-client-js"
@@ -13,20 +10,785 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// ============================================================
+// USER & AUTHENTICATION
+// ============================================================
+
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id              String    @id @default(cuid())
+  email           String    @unique
+  firstName       String
+  lastName        String
+  phone           String?
+  avatar          String?
+  role            UserRole  @default(GUEST)
+  emailVerified   Boolean   @default(false)
+  phoneVerified   Boolean   @default(false)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  lastLoginAt     DateTime?
+
+  // Relations
+  accounts        Account[]
+  sessions        Session[]
+  bookings        Booking[]
+  tableBookings   TableBooking[]
+  experienceBookings ExperienceBooking[]
+  spaBookings     SpaBooking[]
+  loyaltyMember   LoyaltyMember?
+  reviews         Review[]
+  blogPosts       BlogPost[]
+  contactForms    ContactForm[]
+
+  @@map("users")
 }
 
-model Post {
-  id        String   @id @default(cuid())
-  title     String
-  content   String?
-  published Boolean  @default(false)
-  authorId  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+enum UserRole {
+  GUEST
+  MEMBER
+  ADMIN
+  STAFF
+}
+
+// NextAuth.js Models
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// ============================================================
+// ROOMS & ACCOMMODATIONS
+// ============================================================
+
+model Room {
+  id                String      @id @default(cuid())
+  name              String
+  type              RoomType
+  view              RoomView
+  description       String
+  shortDescription  String
+  images            String      // JSON array of image URLs
+  virtualTourUrl    String?
+  basePrice         Float
+  currency          String      @default("USD")
+  size              Int         // in square feet
+  maxOccupancy      Int
+  maxAdults         Int
+  maxChildren       Int
+  beds              String      // JSON array of {type, count}
+  amenities         String      // JSON array of amenity names
+  smokingAllowed    Boolean     @default(false)
+  petFriendly       Boolean     @default(false)
+  accessible        Boolean     @default(false)
+  connectingRooms   Boolean     @default(false)
+  totalRooms        Int
+  rating            Float       @default(0)
+  reviewCount       Int         @default(0)
+  featured          Boolean     @default(false)
+  sortOrder         Int         @default(0)
+  active            Boolean     @default(true)
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+
+  // Relations
+  bookings          RoomBooking[]
+  reviews           Review[]
+
+  @@index([type])
+  @@index([view])
+  @@index([featured])
+  @@map("rooms")
+}
+
+enum RoomType {
+  STANDARD
+  DELUXE
+  SUITE
+  PRESIDENTIAL
+  ROYAL
+}
+
+enum RoomView {
+  CITY
+  GARDEN
+  OCEAN
+  MOUNTAIN
+  POOL
+  COURTYARD
+}
+
+// ============================================================
+// BOOKINGS & RESERVATIONS
+// ============================================================
+
+model Booking {
+  id                  String          @id @default(cuid())
+  confirmationNumber  String          @unique
+  userId              String?
+  guestTitle          String
+  guestFirstName      String
+  guestLastName       String
+  guestEmail          String
+  guestPhone          String
+  guestCountry        String
+  specialRequests     String?
+  status              BookingStatus   @default(PENDING)
+  paymentStatus       PaymentStatus   @default(PENDING)
+  checkIn             DateTime
+  checkOut            DateTime
+  adults              Int
+  children            Int
+  rooms               Int
+  subtotal            Float
+  taxes               Float
+  fees                Float
+  discount            Float           @default(0)
+  totalAmount         Float
+  currency            String          @default("USD")
+  promoCode           String?
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+
+  // Relations
+  user                User?           @relation(fields: [userId], references: [id], onDelete: SetNull)
+  roomBookings        RoomBooking[]
+  pointsTransactions  PointsTransaction[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([checkIn, checkOut])
+  @@map("bookings")
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CHECKED_IN
+  CHECKED_OUT
+  CANCELLED
+  NO_SHOW
+  REFUNDED
+}
+
+enum PaymentStatus {
+  PENDING
+  PARTIAL
+  PAID
+  REFUNDED
+  FAILED
+}
+
+model RoomBooking {
+  id          String   @id @default(cuid())
+  bookingId   String
+  roomId      String
+  roomName    String
+  checkIn     DateTime
+  checkOut    DateTime
+  adults      Int
+  children    Int
+  pricePerNight Float
+  totalPrice  Float
+  currency    String   @default("USD")
+
+  booking     Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  room        Room     @relation(fields: [roomId], references: [id], onDelete: Restrict)
+
+  @@index([bookingId])
+  @@index([roomId])
+  @@index([checkIn, checkOut])
+  @@map("room_bookings")
+}
+
+// ============================================================
+// DINING & RESTAURANTS
+// ============================================================
+
+model Restaurant {
+  id              String          @id @default(cuid())
+  name            String
+  description     String
+  shortDescription String
+  cuisine         String          // JSON array of cuisine types
+  mealTypes       String          // JSON array of meal types
+  images          String          // JSON array of image URLs
+  capacity        Int
+  openingHours    String          // JSON object of opening hours
+  dressCode       String?
+  priceRange      PriceRange
+  features        String          // JSON array of features
+  dietaryOptions  String          // JSON array of dietary options
+  chefName        String?
+  chefTitle       String?
+  chefBio         String?
+  chefImage       String?
+  menuEnabled     Boolean         @default(true)
+  tableBookingEnabled Boolean      @default(true)
+  minGuests       Int             @default(1)
+  maxGuests       Int             @default(20)
+  depositRequired Boolean         @default(false)
+  depositAmount   Float?
+  featured        Boolean         @default(false)
+  sortOrder       Int             @default(0)
+  active          Boolean         @default(true)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  // Relations
+  tableBookings   TableBooking[]
+  menuItems       MenuItem[]
+
+  @@index([featured])
+  @@map("restaurants")
+}
+
+enum PriceRange {
+  ONE
+  TWO
+  THREE
+  FOUR
+}
+
+model MenuItem {
+  id              String      @id @default(cuid())
+  restaurantId    String
+  name            String
+  description     String
+  price           Float
+  currency        String      @default("USD")
+  category        String
+  dietary         String      // JSON array of dietary types
+  allergens       String?     // JSON array of allergens
+  image           String?
+  featured        Boolean     @default(false)
+  spicy           Int?        // 1-3 scale
+  vegetarian      Boolean     @default(false)
+  available       Boolean     @default(true)
+  sortOrder       Int         @default(0)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  restaurant      Restaurant  @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+
+  @@index([restaurantId])
+  @@index([category])
+  @@map("menu_items")
+}
+
+model TableBooking {
+  id                  String          @id @default(cuid())
+  confirmationNumber  String          @unique
+  userId              String?
+  restaurantId        String
+  restaurantName      String
+  guestTitle          String
+  guestFirstName      String
+  guestLastName       String
+  guestEmail          String
+  guestPhone          String
+  date                DateTime
+  time                String
+  guests              Int
+  specialRequests     String?
+  status              BookingStatus   @default(PENDING)
+  depositAmount       Float?
+  depositPaid         Boolean         @default(false)
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+
+  user                User?           @relation(fields: [userId], references: [id], onDelete: SetNull)
+  restaurant          Restaurant      @relation(fields: [restaurantId], references: [id], onDelete: Restrict)
+
+  @@index([userId])
+  @@index([restaurantId])
+  @@index([date, time])
+  @@map("table_bookings")
+}
+
+// ============================================================
+// EXPERIENCES & ACTIVITIES
+// ============================================================
+
+model Experience {
+  id                  String                @id @default(cuid())
+  name                String
+  description         String
+  shortDescription    String
+  category            ExperienceCategory
+  difficulty          ExperienceDifficulty
+  duration            String
+  images              String                // JSON array
+  videoUrl            String?
+  price               Float
+  currency            String                @default("USD")
+  priceIncludes       String                // JSON array
+  priceExcludes       String                // JSON array
+  maxGroupSize        Int
+  minAge              Int?
+  location            String
+  meetingPoint        String?
+  inclusions          String                // JSON array
+  exclusions          String                // JSON array
+  whatToBring         String?               // JSON array
+  cancellationPolicy  String
+  featured            Boolean               @default(false)
+  available           Boolean               @default(true)
+  rating              Float                 @default(0)
+  reviewCount         Int                   @default(0)
+  sortOrder           Int                   @default(0)
+  active              Boolean               @default(true)
+  createdAt           DateTime              @default(now())
+  updatedAt           DateTime              @updatedAt
+
+  bookings            ExperienceBooking[]
+
+  @@index([category])
+  @@index([featured])
+  @@map("experiences")
+}
+
+enum ExperienceCategory {
+  ADVENTURE
+  CULTURAL
+  WELLNESS
+  CULINARY
+  ROMANTIC
+  FAMILY
+  BUSINESS
+  SIGHTSEEING
+}
+
+enum ExperienceDifficulty {
+  EASY
+  MODERATE
+  CHALLENGING
+}
+
+model ExperienceBooking {
+  id                  String        @id @default(cuid())
+  experienceId        String
+  experienceName      String
+  userId              String?
+  guestTitle          String
+  guestFirstName      String
+  guestLastName       String
+  guestEmail          String
+  guestPhone          String
+  date                DateTime
+  time                String?
+  participants         Int
+  specialRequests     String?
+  status              BookingStatus @default(PENDING)
+  totalPrice          Float
+  currency            String        @default("USD")
+  confirmationNumber  String        @unique
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+
+  experience          Experience    @relation(fields: [experienceId], references: [id], onDelete: Restrict)
+  user                User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([experienceId])
+  @@index([date])
+  @@map("experience_bookings")
+}
+
+// ============================================================
+// SPA & WELLNESS
+// ============================================================
+
+model SpaTreatment {
+  id                  String              @id @default(cuid())
+  name                String
+  description         String
+  shortDescription    String
+  category            TreatmentCategory
+  duration            Int                 // in minutes
+  price               Float
+  currency            String              @default("USD")
+  images              String              // JSON array
+  benefits            String              // JSON array
+  contraindications   String?             // JSON array
+  therapistGender     TherapistGender?
+  featured            Boolean             @default(false)
+  available           Boolean             @default(true)
+  sortOrder           Int                 @default(0)
+  active              Boolean             @default(true)
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+
+  bookings            SpaBooking[]
+
+  @@index([category])
+  @@index([featured])
+  @@map("spa_treatments")
+}
+
+enum TreatmentCategory {
+  MASSAGE
+  FACIAL
+  BODY_TREATMENT
+  HYDROTHERAPY
+  AYURVEDA
+  WELLNESS
+}
+
+enum TherapistGender {
+  MALE
+  FEMALE
+  ANY
+}
+
+model SpaBooking {
+  id                  String        @id @default(cuid())
+  treatmentId         String
+  treatmentName       String
+  userId              String?
+  guestTitle          String
+  guestFirstName      String
+  guestLastName       String
+  guestEmail          String
+  guestPhone          String
+  date                DateTime
+  time                String
+  therapistPreference  TherapistGender?
+  specialRequests     String?
+  status              BookingStatus @default(PENDING)
+  totalPrice          Float
+  currency            String        @default("USD")
+  confirmationNumber  String        @unique
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+
+  treatment           SpaTreatment  @relation(fields: [treatmentId], references: [id], onDelete: Restrict)
+  user                User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([treatmentId])
+  @@index([date, time])
+  @@map("spa_bookings")
+}
+
+// ============================================================
+// EVENTS & WEDDINGS
+// ============================================================
+
+model Venue {
+  id              String      @id @default(cuid())
+  name            String
+  description     String
+  type            String      // JSON array of EventTypes
+  capacityTheater Int
+  capacityClassroom Int
+  capacityBanquet Int
+  capacityCocktail Int
+  size            Int         // in square feet
+  images          String      // JSON array
+  floorPlan       String?
+  features        String      // JSON array
+  equipment       String      // JSON array
+  location        String
+  naturalLight    Boolean     @default(false)
+  outdoorAccess   Boolean     @default(false)
+  featured        Boolean     @default(false)
+  active          Boolean     @default(true)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  events          Event[]
+
+  @@index([featured])
+  @@map("venues")
+}
+
+model Event {
+  id                  String      @id @default(cuid())
+  name                String
+  type                EventType
+  venueId             String
+  venueName           String
+  date                DateTime
+  startTime           String
+  endTime             String
+  expectedGuests      Int
+  description         String
+  requirements        String      // JSON array
+  cateringRequired    Boolean     @default(false)
+  cateringType        String?     // buffet, plated, cocktail, tea-coffee
+  dietary             String?     // JSON array
+  accommodationRequired Boolean    @default(false)
+  roomsNeeded         Int?
+  status              BookingStatus @default(PENDING)
+  estimatedBudget     Float?
+  currency            String      @default("USD")
+  contactTitle        String
+  contactFirstName    String
+  contactLastName     String
+  contactEmail        String
+  contactPhone        String
+  createdAt           DateTime    @default(now())
+  updatedAt           DateTime    @updatedAt
+
+  venue               Venue       @relation(fields: [venueId], references: [id], onDelete: Restrict)
+
+  @@index([type])
+  @@index([venueId])
+  @@index([date])
+  @@map("events")
+}
+
+enum EventType {
+  WEDDING
+  CORPORATE
+  SOCIAL
+  CONFERENCE
+  EXHIBITION
+  PRIVATE_DINING
+}
+
+// ============================================================
+// OFFERS & PROMOTIONS
+// ============================================================
+
+model Offer {
+  id              String      @id @default(cuid())
+  name            String
+  description     String
+  shortDescription String
+  type            OfferType
+  images          String      // JSON array
+  startDate       DateTime
+  endDate         DateTime
+  discountType    String      // percentage or fixed
+  discountValue   Float
+  minStay         Int?
+  maxDiscount     Float?
+  applicableTo    String      // JSON array of IDs
+  terms           String      // JSON array
+  promoCode       String?     @unique
+  featured        Boolean     @default(false)
+  active          Boolean     @default(true)
+  sortOrder       Int         @default(0)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  @@index([type])
+  @@index([featured])
+  @@index([promoCode])
+  @@index([startDate, endDate])
+  @@map("offers")
+}
+
+enum OfferType {
+  ROOM_DISCOUNT
+  DINING
+  SPA
+  EXPERIENCE
+  PACKAGE
+  STAY_PAY
+  EARLY_BIRD
+  LAST_MINUTE
+}
+
+// ============================================================
+// LOYALTY PROGRAM
+// ============================================================
+
+model LoyaltyMember {
+  id                  String      @id @default(cuid())
+  membershipNumber    String      @unique
+  userId              String      @unique
+  tier                LoyaltyTier @default(SILVER)
+  points              Int         @default(0)
+  pointsEarned        Int         @default(0)
+  pointsRedeemed      Int         @default(0)
+  memberSince         DateTime    @default(now())
+  tierExpiry          DateTime?
+  preferences         String?     // JSON object
+  createdAt           DateTime    @default(now())
+  updatedAt           DateTime    @updatedAt
+
+  user                User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transactions        PointsTransaction[]
+
+  @@index([userId])
+  @@index([membershipNumber])
+  @@index([tier])
+  @@map("loyalty_members")
+}
+
+enum LoyaltyTier {
+  SILVER
+  GOLD
+  PLATINUM
+  ROYAL
+}
+
+model PointsTransaction {
+  id              String              @id @default(cuid())
+  memberId        String
+  type            PointsTransactionType
+  points          Int
+  description     String
+  bookingId       String?
+  balance         Int
+  expiresAt       DateTime?
+  createdAt       DateTime            @default(now())
+
+  member          LoyaltyMember       @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  booking         Booking?            @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+
+  @@index([memberId])
+  @@index([type])
+  @@index([bookingId])
+  @@map("points_transactions")
+}
+
+enum PointsTransactionType {
+  EARNED
+  REDEEMED
+  EXPIRED
+}
+
+// ============================================================
+// CONTENT & REVIEWS
+// ============================================================
+
+model Review {
+  id              String      @id @default(cuid())
+  userId          String?
+  roomId          String?
+  guestName       String
+  guestLocation   String?
+  roomType        String?
+  rating          Int
+  title           String?
+  content         String
+  stayDate        DateTime
+  verified        Boolean     @default(false)
+  responseContent String?
+  responseAuthor  String?
+  responseDate    DateTime?
+  featured        Boolean     @default(false)
+  active          Boolean     @default(true)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  user            User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  room            Room?       @relation(fields: [roomId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([roomId])
+  @@index([rating])
+  @@index([verified])
+  @@index([featured])
+  @@map("reviews")
+}
+
+model BlogPost {
+  id              String      @id @default(cuid())
+  slug            String      @unique
+  title           String
+  excerpt         String
+  content         String
+  authorId        String?
+  authorName      String?
+  authorAvatar    String?
+  authorBio       String?
+  category        String
+  tags            String      // JSON array
+  featuredImage   String
+  gallery         String?     // JSON array
+  publishedAt     DateTime?
+  status          PostStatus  @default(DRAFT)
+  metaTitle       String?
+  metaDescription String?
+  keywords        String?     // JSON array
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  user            User?       @relation(fields: [authorId], references: [id], onDelete: SetNull)
+
+  @@index([slug])
+  @@index([status])
+  @@index([category])
+  @@index([publishedAt])
+  @@map("blog_posts")
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+model GalleryItem {
+  id              String      @id @default(cuid())
+  title           String
+  description     String?
+  image           String
+  category        String
+  tags            String      // JSON array
+  alt             String
+  order           Int         @default(0)
+  active          Boolean     @default(true)
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  @@index([category])
+  @@map("gallery_items")
+}
+
+model ContactForm {
+  id              String      @id @default(cuid())
+  name            String
+  email           String
+  phone           String?
+  subject         String
+  message         String
+  interest        String?
+  preferredContact String?    // email or phone
+  consent         Boolean
+  createdAt       DateTime    @default(now())
+
+  user            User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  userId          String?
+
+  @@index([createdAt])
+  @@map("contact_forms")
 }
