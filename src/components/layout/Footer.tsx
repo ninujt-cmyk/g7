@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { CookieSettingsButton } from '@/components/common/CookieConsent';
 import { cn } from '@/lib/utils';
 
 /**
@@ -286,6 +287,8 @@ export function Footer() {
               <Link href="/accessibility" className="hover:text-g7-gold transition-colors">
                 Accessibility
               </Link>
+              <span>•</span>
+              <CookieSettingsButton />
             </div>
           </div>
         </div>
