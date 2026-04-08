@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { CookieConsent } from "@/components/common/CookieConsent";
 import { ThemeProvider } from "next-themes";
 
 // G7 Hotels Brand Fonts
@@ -89,6 +90,7 @@ export default function RootLayout({
         >
           {children}
           <Toaster />
+          <CookieConsent />
         </ThemeProvider>
       </body>
     </html>
