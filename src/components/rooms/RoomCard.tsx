@@ -9,7 +9,7 @@ import {
   Maximize,
   Wifi,
   Coffee,
-  TV,
+  Tv,
   Bath,
   Snowflake,
   UtensilsCrossed,
@@ -46,7 +46,7 @@ const amenityIcons: Record<string, React.ReactNode> = {
   'Free Wi-Fi': <Wifi className="h-4 w-4" />,
   'Room Service': <UtensilsCrossed className="h-4 w-4" />,
   'Air Conditioning': <Snowflake className="h-4 w-4" />,
-  'Smart TV': <TV className="h-4 w-4" />,
+  'Smart TV': <Tv className="h-4 w-4" />,
   'Coffee Maker': <Coffee className="h-4 w-4" />,
   'Bathtub': <Bath className="h-4 w-4" />,
 };
