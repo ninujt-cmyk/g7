@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { cn } from '@/lib/utils';
+import { cn, format } from '@/lib/utils';
 import type { Testimonial } from '@/types';
 
 /**
@@ -238,7 +238,7 @@ export function TestimonialCarousel({
                     <p className="text-g7-charcoal/70 text-sm mb-2">
                       <span className="font-medium">{currentTestimonial.response.author}</span>
                       {' '}responded on{' '}
-                      {currentTestimonial.response.date.toLocaleDateString()}
+                      {format(currentTestimonial.response.date, 'MMM dd, yyyy')}
                     </p>
                     <p className="text-g7-charcoal/80 italic">
                       "{currentTestimonial.response.content}"
