@@ -88,7 +88,7 @@ export default function RoomDetailPage() {
           '/images/rooms/luxury-room.jpg',
         ],
         virtualTourUrl: '/virtual-tour',
-        basePrice: 125,000,
+        basePrice: 125000,
         currency: 'INR',
         size: 2500,
         maxOccupancy: 4,

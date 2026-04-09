@@ -89,7 +89,7 @@ const mockOffers: Offer[] = [
     endDate: new Date('2024-12-31'),
     discount: {
       type: 'fixed',
-      value: 16,600,
+      value: 16600,
     },
     terms: [
       'Valid for suite bookings only',
