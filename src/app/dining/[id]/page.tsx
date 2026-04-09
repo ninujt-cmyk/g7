@@ -96,8 +96,8 @@ export default function RestaurantDetailPage() {
               id: '1',
               name: 'Pan-Seared Foie Gras',
               description: 'With caramelized figs and balsamic reduction',
-              price: 45,
-              currency: 'USD',
+              price: 3,750,
+              currency: 'INR',
               category: 'Starters',
               dietary: [],
               vegetarian: false,
@@ -107,8 +107,8 @@ export default function RestaurantDetailPage() {
               id: '2',
               name: 'Wagyu Beef Tenderloin',
               description: 'With truffle mash and red wine jus',
-              price: 95,
-              currency: 'USD',
+              price: 7,900,
+              currency: 'INR',
               category: 'Main Course',
               dietary: [],
               vegetarian: false,
@@ -382,7 +382,7 @@ export default function RestaurantDetailPage() {
                                 </p>
                               </div>
                               <span className="ml-4 font-medium text-g7-charcoal">
-                                ${item.price}
+                                ₹{item.price.toLocaleString()}
                               </span>
                             </div>
                           ))}
@@ -471,7 +471,7 @@ export default function RestaurantDetailPage() {
                   </Button>
                   {restaurant.tableBooking?.depositRequired && (
                     <p className="text-sm text-g7-charcoal/60 mb-6">
-                      ${restaurant.tableBooking.depositAmount} deposit required
+                      ₹{restaurant.tableBooking.depositAmount?.toLocaleString()} deposit required
                     </p>
                   )}
                   <Separator className="my-6" />

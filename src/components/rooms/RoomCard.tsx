@@ -172,7 +172,7 @@ export function RoomCard({
                 {showPrice && (
                   <div className="text-right flex-shrink-0">
                     <p className="text-g7-gold font-serif text-2xl">
-                      ${room.basePrice}
+                      ₹{room.basePrice.toLocaleString()}
                     </p>
                     <p className="text-g7-charcoal/60 text-sm">per night</p>
                   </div>

@@ -296,20 +296,20 @@ export default function RoomsPage() {
                 </h3>
                 <div className="space-y-4">
                   <Slider
-                    value={[filters.priceRange?.max || 5000]}
+                    value={[filters.priceRange?.max || 100000]}
                     onValueChange={([value]) =>
                       setFilters((prev) => ({
                         ...prev,
                         priceRange: { min: 0, max: value },
                       }))
                     }
-                    max={5000}
-                    step={100}
+                    max={100000}
+                    step={5000}
                     className="[&_[role=slider]]:bg-g7-gold"
                   />
                   <div className="flex justify-between text-sm text-g7-charcoal/60">
-                    <span>$0</span>
-                    <span>${filters.priceRange?.max || 5000}</span>
+                    <span>₹0</span>
+                    <span>₹{(filters.priceRange?.max || 100000).toLocaleString()}</span>
                   </div>
                 </div>
               </div>

@@ -281,7 +281,7 @@ export async function POST(request: NextRequest) {
         fees,
         discount,
         totalAmount,
-        currency: 'USD',
+        currency: 'INR',
         promoCode: discount > 0 ? promoCode : null,
         roomBookings: {
           create: roomDetails.map((r) => ({
@@ -301,9 +301,9 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Add loyalty points if user is a member (5 points per $1 spent)
+    // Add loyalty points if user is a member (5 points per ₹100 spent)
     if (userId) {
-      const pointsEarned = Math.floor(totalAmount * 5);
+      const pointsEarned = Math.floor(totalAmount / 100 * 5);
       
       // Check if user has a loyalty member record
       const member = await db.loyaltyMember.findUnique({

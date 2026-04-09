@@ -121,7 +121,7 @@ export default function EventCard({ event, variant = 'grid' }: EventCardProps) {
         {event.price && (
           <div className="mb-6">
             <span className="text-g7-gold text-lg font-semibold">
-              {event.currency || 'USD'} {event.price.toLocaleString()}
+              {event.currency || 'INR'} {event.price.toLocaleString()}
             </span>
             {event.pricePer && (
               <span className="text-gray-600 text-sm ml-2">/ {event.pricePer}</span>

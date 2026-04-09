@@ -41,8 +41,8 @@ const featuredRooms = [
     type: 'presidential',
     shortDescription: 'The ultimate in luxury with panoramic city views, private terrace, and dedicated butler service.',
     images: ['/images/rooms/luxury-room.jpg'],
-    basePrice: 1500,
-    currency: 'USD',
+    basePrice: 125,000,
+    currency: 'INR',
     rating: 5,
     reviewCount: 124,
     featured: true,
@@ -60,8 +60,8 @@ const featuredRooms = [
     type: 'royal',
     shortDescription: 'Opulent living space with garden views, private plunge pool, and exclusive amenities.',
     images: ['/images/rooms/luxury-room.jpg'],
-    basePrice: 2200,
-    currency: 'USD',
+    basePrice: 183,000,
+    currency: 'INR',
     rating: 5,
     reviewCount: 89,
     featured: true,
@@ -102,8 +102,8 @@ const experiences = [
     name: 'Sunset Yacht Cruise',
     category: 'adventure',
     shortDescription: 'Sail into the sunset with champagne and gourmet canapés.',
-    price: 350,
-    currency: 'USD',
+    price: 29,000,
+    currency: 'INR',
     duration: '3 hours',
     image: '/images/hero/hero-1.jpg',
     featured: true,
@@ -113,8 +113,8 @@ const experiences = [
     name: 'Private Chef Experience',
     category: 'culinary',
     shortDescription: 'A bespoke dining experience prepared by our executive chef.',
-    price: 500,
-    currency: 'USD',
+    price: 41,500,
+    currency: 'INR',
     duration: '4 hours',
     image: '/images/dining/fine-dining.jpg',
     featured: true,
@@ -275,7 +275,7 @@ export default function HomePage() {
                       <div className="flex items-center justify-between">
                         <div>
                           <span className="text-g7-gold font-serif text-xl">
-                            ${room.basePrice}
+                            ₹{room.basePrice.toLocaleString()}
                           </span>
                           <span className="text-white/60 text-sm"> /night</span>
                         </div>
@@ -412,7 +412,7 @@ export default function HomePage() {
                     <p className="text-g7-charcoal/70 text-sm mb-4">{experience.shortDescription}</p>
                     <div className="flex items-center justify-between">
                       <div>
-                        <span className="text-g7-charcoal font-medium">${experience.price}</span>
+                        <span className="text-g7-charcoal font-medium">₹{experience.price.toLocaleString()}</span>
                         <span className="text-g7-charcoal/60 text-sm"> /person</span>
                       </div>
                       <span className="text-g7-charcoal/60 text-sm">{experience.duration}</span>
@@ -486,7 +486,7 @@ export default function HomePage() {
                       <Badge className="bg-g7-gold text-g7-charcoal text-base px-4 py-1">
                         {offer.discount.type === 'percentage'
                           ? `${offer.discount.value}% OFF`
-                          : `$${offer.discount.value} OFF`}
+                          : `₹${offer.discount.value.toLocaleString()} OFF`}
                       </Badge>
                       <span className="text-sm text-g7-charcoal/60">
                         Valid until {format(new Date(offer.validUntil), 'MMM dd, yyyy')}
@@ -575,7 +575,7 @@ export default function HomePage() {
                 <h3 className="font-serif text-2xl text-g7-charcoal">Member Benefits</h3>
                 <div className="space-y-4">
                   {[
-                    'Earn 5 points per $1 spent on rooms',
+                    'Earn 5 points per ₹100 spent on rooms',
                     '10% bonus points for Gold members',
                     'Priority check-in and late check-out',
                     'Room upgrades subject to availability',

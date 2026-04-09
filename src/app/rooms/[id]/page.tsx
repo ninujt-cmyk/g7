@@ -88,8 +88,8 @@ export default function RoomDetailPage() {
           '/images/rooms/luxury-room.jpg',
         ],
         virtualTourUrl: '/virtual-tour',
-        basePrice: 1500,
-        currency: 'USD',
+        basePrice: 125,000,
+        currency: 'INR',
         size: 2500,
         maxOccupancy: 4,
         maxAdults: 4,
@@ -428,7 +428,7 @@ export default function RoomDetailPage() {
                 <Card className="sticky top-24 p-6">
                   <div className="mb-6">
                     <p className="text-4xl font-serif text-g7-charcoal">
-                      ${room.basePrice}
+                      ₹{room.basePrice.toLocaleString()}
                     </p>
                     <p className="text-g7-charcoal/60">per night</p>
                   </div>

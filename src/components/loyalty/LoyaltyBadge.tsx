@@ -70,7 +70,7 @@ const tierConfig: Record<
       'Personal Concierge',
       '15% Bonus Points on Stays',
       'Airport Transfer',
-      'Spa Credit ($100 per stay)',
+      'Spa Credit (₹8,300 per stay)',
     ],
   },
   royal: {

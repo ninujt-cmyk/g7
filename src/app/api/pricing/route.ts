@@ -103,7 +103,7 @@ export async function GET(request: NextRequest) {
     
     // Fees (service fee, resort fee, etc.)
     const serviceFee = subtotal * 0.05; // 5% service fee
-    const resortFee = 25 * nights * roomsNum; // $25 per night per room
+    const resortFee = 2000 * nights * roomsNum; // ₹2,000 per night per room
     const fees = serviceFee + resortFee;
     
     // Apply promo code if provided

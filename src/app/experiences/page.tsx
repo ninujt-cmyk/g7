@@ -36,8 +36,8 @@ export default function ExperiencesPage() {
           difficulty: 'EASY',
           duration: '3 hours',
           images: ['/images/hero/hero-1.jpg'],
-          price: 350,
-          currency: 'USD',
+          price: 29,000,
+          currency: 'INR',
           maxGroupSize: 12,
           featured: true,
           available: true,
@@ -52,8 +52,8 @@ export default function ExperiencesPage() {
           difficulty: 'EASY',
           duration: '4 hours',
           images: ['/images/dining/fine-dining.jpg'],
-          price: 500,
-          currency: 'USD',
+          price: 41,500,
+          currency: 'INR',
           maxGroupSize: 8,
           featured: true,
           available: true,
@@ -68,8 +68,8 @@ export default function ExperiencesPage() {
           difficulty: 'MODERATE',
           duration: 'Full day',
           images: ['/images/hero/hero-1.jpg'],
-          price: 150,
-          currency: 'USD',
+          price: 12,500,
+          currency: 'INR',
           maxGroupSize: 20,
           featured: false,
           available: true,
@@ -84,8 +84,8 @@ export default function ExperiencesPage() {
           difficulty: 'EASY',
           duration: 'Full day',
           images: ['/images/spa/spa-treatment.jpg'],
-          price: 400,
-          currency: 'USD',
+          price: 33,200,
+          currency: 'INR',
           maxGroupSize: 15,
           featured: true,
           available: true,
@@ -211,7 +211,7 @@ export default function ExperiencesPage() {
                     <div className="flex items-center justify-between">
                       <div>
                         <span className="text-2xl font-serif text-g7-charcoal">
-                          ${experience.price}
+                          ₹{experience.price.toLocaleString()}
                         </span>
                         <span className="text-g7-charcoal/60 text-sm"> /person</span>
                       </div>

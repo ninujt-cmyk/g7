@@ -7,7 +7,7 @@ import {
   Tag,
   Calendar,
   Percent,
-  DollarSign,
+  Rupee,
   Clock,
   Check,
   ArrowRight,
@@ -57,7 +57,7 @@ const mockOffers: Offer[] = [
   {
     id: '1',
     name: 'Summer Escape',
-    description: 'Experience the perfect summer getaway with our exclusive package. Enjoy extended stays, complimentary breakfast, and a $100 spa credit. Perfect for families and couples looking to make the most of the season.',
+    description: 'Experience the perfect summer getaway with our exclusive package. Enjoy extended stays, complimentary breakfast, and a ₹8,300 spa credit. Perfect for families and couples looking to make the most of the season.',
     shortDescription: 'Stay 3 nights, pay for 2. Includes daily breakfast and spa credit.',
     type: 'stay-pay',
     images: ['/images/hero/hero-1.jpg'],
@@ -89,7 +89,7 @@ const mockOffers: Offer[] = [
     endDate: new Date('2024-12-31'),
     discount: {
       type: 'fixed',
-      value: 200,
+      value: 16,600,
     },
     terms: [
       'Valid for suite bookings only',
@@ -302,8 +302,8 @@ export default function OffersPage() {
                         </>
                       ) : (
                         <>
-                          <DollarSign className="h-4 w-4" />
-                          ${offer.discount.value} OFF
+                          <Rupee className="h-4 w-4" />
+                          ₹{offer.discount.value.toLocaleString()} OFF
                         </>
                       )}
                     </div>

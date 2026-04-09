@@ -34,8 +34,8 @@ export default function SpaPage() {
           description: 'A personalized massage tailored to your needs using premium essential oils.',
           category: 'MASSAGE',
           duration: 60,
-          price: 150,
-          currency: 'USD',
+          price: 12,500,
+          currency: 'INR',
           images: ['/images/spa/spa-treatment.jpg'],
           benefits: ['Stress Relief', 'Muscle Relaxation', 'Improved Circulation'],
           featured: true,
@@ -47,8 +47,8 @@ export default function SpaPage() {
           description: 'Deep cleansing and hydration treatment for radiant, glowing skin.',
           category: 'FACIAL',
           duration: 75,
-          price: 180,
-          currency: 'USD',
+          price: 15,000,
+          currency: 'INR',
           images: ['/images/spa/spa-treatment.jpg'],
           benefits: ['Hydration', 'Anti-Aging', 'Skin Brightening'],
           featured: true,
@@ -60,8 +60,8 @@ export default function SpaPage() {
           description: 'Full body treatment with therapeutic essential oils and warm wraps.',
           category: 'BODY_TREATMENT',
           duration: 90,
-          price: 200,
-          currency: 'USD',
+          price: 16,600,
+          currency: 'INR',
           images: ['/images/spa/spa-treatment.jpg'],
           benefits: ['Detoxification', 'Relaxation', 'Skin Nourishment'],
           featured: false,
@@ -172,7 +172,7 @@ export default function SpaPage() {
                       </div>
                       <div className="flex items-center gap-1">
                         <Award className="h-4 w-4 text-g7-gold" />
-                        <span>${treatment.price}</span>
+                        <span>₹{treatment.price.toLocaleString()}</span>
                       </div>
                     </div>
                     <Button className="w-full bg-g7-charcoal text-g7-ivory hover:bg-g7-gold hover:text-g7-charcoal">
