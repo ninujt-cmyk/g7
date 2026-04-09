@@ -7,7 +7,7 @@ import {
   Tag,
   Calendar,
   Percent,
-  Rupee,
+  IndianRupee,
   Clock,
   Check,
   ArrowRight,
@@ -302,7 +302,7 @@ export default function OffersPage() {
                         </>
                       ) : (
                         <>
-                          <Rupee className="h-4 w-4" />
+                          <IndianRupee className="h-4 w-4" />
                           ₹{offer.discount.value.toLocaleString()} OFF
                         </>
                       )}
