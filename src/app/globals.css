@@ -30,6 +30,17 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+
+  /* G7 Hotels Brand Colors */
+  --color-g7-charcoal: #1A1A1A;
+  --color-g7-ivory: #F8F6F2;
+  --color-g7-gold: #C9A45C;
+  --color-g7-emerald: #2C4A3E;
+  --color-g7-gold-light: #D4B97D;
+  --color-g7-gold-dark: #A88545;
+  --color-g7-charcoal-light: #2D2D2D;
+  --color-g7-ivory-dark: #E8E4DC;
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -204,16 +215,18 @@
   }
   
   ::-webkit-scrollbar-thumb {
-    @apply bg-g7-gold rounded-full;
+    background-color: #C9A45C;
+    border-radius: 9999px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-g7-gold-dark;
+    background-color: #A88545;
   }
-  
+
   /* Selection */
   ::selection {
-    @apply bg-g7-gold text-g7-charcoal;
+    background-color: #C9A45C;
+    color: #1A1A1A;
   }
 }
 
@@ -222,18 +235,18 @@
  */
 @layer utilities {
   .text-gold-gradient {
-    @apply bg-gradient-to-r from-g7-gold via-g7-gold-light to-g7-gold;
+    background: linear-gradient(to right, #C9A45C, #D4B97D, #C9A45C);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   .bg-charcoal-gradient {
-    @apply bg-gradient-to-b from-g7-charcoal to-g7-charcoal-light;
+    background: linear-gradient(to bottom, #1A1A1A, #2D2D2D);
   }
-  
+
   .bg-ivory-gradient {
-    @apply bg-gradient-to-b from-g7-ivory to-g7-ivory-dark;
+    background: linear-gradient(to bottom, #F8F6F2, #E8E4DC);
   }
   
   .text-balance {
@@ -275,24 +288,76 @@
   
   /* Button Styles */
   .btn-primary-luxury {
-    @apply bg-g7-charcoal text-g7-ivory px-8 py-4 rounded-sm font-medium tracking-wide hover:bg-g7-gold hover:text-g7-charcoal transition-all duration-300;
+    background-color: #1A1A1A;
+    color: #F8F6F2;
+    padding: 1rem 2rem;
+    border-radius: 0.125rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease-in-out;
   }
-  
+
+  .btn-primary-luxury:hover {
+    background-color: #C9A45C;
+    color: #1A1A1A;
+  }
+
   .btn-secondary-luxury {
-    @apply bg-transparent border-2 border-g7-gold text-g7-gold px-8 py-4 rounded-sm font-medium tracking-wide hover:bg-g7-gold hover:text-g7-charcoal transition-all duration-300;
+    background-color: transparent;
+    border: 2px solid #C9A45C;
+    color: #C9A45C;
+    padding: 1rem 2rem;
+    border-radius: 0.125rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease-in-out;
   }
-  
+
+  .btn-secondary-luxury:hover {
+    background-color: #C9A45C;
+    color: #1A1A1A;
+  }
+
   .btn-ghost-luxury {
-    @apply text-g7-charcoal hover:text-g7-gold transition-colors duration-300 underline decoration-1 underline-offset-4 hover:decoration-2;
+    color: #1A1A1A;
+    transition: colors 0.3s;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
   }
-  
+
+  .btn-ghost-luxury:hover {
+    color: #C9A45C;
+    text-decoration-thickness: 2px;
+  }
+
   /* Card Styles */
   .card-luxury {
-    @apply bg-white/95 backdrop-blur-sm shadow-lg rounded-sm overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-radius: 0.125rem;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
   }
-  
+
+  .card-luxury:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: translateY(-0.25rem);
+  }
+
   .card-luxury-dark {
-    @apply bg-g7-charcoal/95 backdrop-blur-sm shadow-lg rounded-sm overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1;
+    background-color: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-radius: 0.125rem;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .card-luxury-dark:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: translateY(-0.25rem);
   }
 }
 
