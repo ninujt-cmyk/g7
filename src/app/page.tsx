@@ -653,13 +653,13 @@ export default function HomePage() {
             </div>
 
             <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-g7-ivory/70">
-              <a href="tel:+18001234567" className="flex items-center gap-2 hover:text-g7-gold transition-colors">
+              <a href="tel:+919491708080" className="flex items-center gap-2 hover:text-g7-gold transition-colors">
                 <Phone className="h-5 w-5" />
-                <span>+1 800 123 4567</span>
+                <span>+91 94917 08080</span>
               </a>
-              <a href="mailto:reservations@g7hotels.com" className="flex items-center gap-2 hover:text-g7-gold transition-colors">
+              <a href="mailto:reservations@g7hotels.in" className="flex items-center gap-2 hover:text-g7-gold transition-colors">
                 <Mail className="h-5 w-5" />
-                <span>reservations@g7hotels.com</span>
+                <span>reservations@g7hotels.in</span>
               </a>
             </div>
           </motion.div>

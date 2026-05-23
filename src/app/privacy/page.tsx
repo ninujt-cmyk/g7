@@ -43,7 +43,7 @@ export default function PrivacyPage() {
               <section className="mb-8">
                 <h2 className="font-serif text-2xl text-g7-charcoal mb-4">Introduction</h2>
                 <p className="text-g7-charcoal/70 leading-relaxed">
-                  G7 Hotels ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website g7hotels.com and use our services.
+                  G7 Hotels ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website g7hotels.in and use our services.
                 </p>
               </section>
 
@@ -151,9 +151,9 @@ export default function PrivacyPage() {
                   If you have questions about this Privacy Policy or our data practices, please contact us:
                 </p>
                 <div className="text-g7-charcoal/70 space-y-2">
-                  <p><strong>Email:</strong> privacy@g7hotels.com</p>
-                  <p><strong>Phone:</strong> +1 800 123 4567</p>
-                  <p><strong>Address:</strong> 123 Luxury Avenue, Downtown District, New York, NY 10001</p>
+                  <p><strong>Email:</strong> privacy@g7hotels.in</p>
+                  <p><strong>Phone:</strong> +91 94917 08080</p>
+                  <p><strong>Address:</strong> Global Headquarters / Tirupati, Merlapaka tollplaza, yerpedu, Srikalahasti, Andhra Pradesh 517619</p>
                 </div>
               </section>
             </div>

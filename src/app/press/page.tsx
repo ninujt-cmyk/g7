@@ -98,9 +98,9 @@ export default function PressPage() {
               For press inquiries, interview requests, or media partnerships, please contact our communications team.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a href="mailto:press@g7hotels.com" className="flex items-center gap-2 text-g7-gold hover:underline">
+              <a href="mailto:press@g7hotels.in" className="flex items-center gap-2 text-g7-gold hover:underline">
                 <Mail className="h-5 w-5" />
-                press@g7hotels.com
+                press@g7hotels.in
               </a>
               <span className="text-g7-ivory/60">|</span>
               <span className="text-g7-ivory/80">Response within 24 hours</span>

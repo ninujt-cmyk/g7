@@ -176,8 +176,8 @@ export default function ReviewsPolicyPage() {
                     If you have questions about our review policy or need to report a concern, please contact our Guest Relations team:
                   </p>
                   <div className="space-y-2 text-g7-charcoal/70">
-                    <p><strong>Email:</strong> reviews@g7hotels.com</p>
-                    <p><strong>Phone:</strong> +1 800 123 4567</p>
+                    <p><strong>Email:</strong> reviews@g7hotels.in</p>
+                    <p><strong>Phone:</strong> +91 94917 08080</p>
                     <p><strong>Response Time:</strong> Within 48 business hours</p>
                   </div>
                 </div>

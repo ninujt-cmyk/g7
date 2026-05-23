@@ -43,7 +43,7 @@ export default function TermsPage() {
               <section className="mb-8">
                 <h2 className="font-serif text-2xl text-g7-charcoal mb-4">Acceptance of Terms</h2>
                 <p className="text-g7-charcoal/70 leading-relaxed">
-                  By accessing and using g7hotels.com (the "Website") and the services provided by G7 Hotels ("we," "our," or "us"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use our Website or services.
+                  By accessing and using g7hotels.in (the "Website") and the services provided by G7 Hotels ("we," "our," or "us"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use our Website or services.
                 </p>
               </section>
 
@@ -155,9 +155,9 @@ export default function TermsPage() {
                   If you have questions about these Terms, please contact us:
                 </p>
                 <div className="text-g7-charcoal/70 space-y-2">
-                  <p><strong>Email:</strong> legal@g7hotels.com</p>
-                  <p><strong>Phone:</strong> +1 800 123 4567</p>
-                  <p><strong>Address:</strong> 123 Luxury Avenue, Downtown District, New York, NY 10001</p>
+                  <p><strong>Email:</strong> legal@g7hotels.in</p>
+                  <p><strong>Phone:</strong> +91 94917 08080</p>
+                  <p><strong>Address:</strong> Global Headquarters / Tirupati, Merlapaka tollplaza, yerpedu, Srikalahasti, Andhra Pradesh 517619</p>
                 </div>
               </section>
             </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Link } from 'next/link';
+import Link from 'next/link';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { PageHero } from '@/components/common/HeroSection';
@@ -18,7 +18,7 @@ import {
   BookOpen,
   MapPin,
   Utensils,
-  Spa,
+  Flower,
 } from 'lucide-react';
 
 /**
@@ -70,7 +70,7 @@ const helpTopics = [
     items: ['Restaurant hours', 'Room service', 'Special diets', 'Reservations'],
   },
   {
-    icon: <Spa className="h-8 w-8" />,
+    icon: <Flower className="h-8 w-8" />,
     title: 'Spa & Wellness',
     description: 'Spa treatments and wellness programs',
     link: '/spa',
@@ -210,8 +210,8 @@ export default function HelpPage() {
               </div>
               <h3 className="font-semibold mb-2">Call Us</h3>
               <p className="text-sm text-g7-ivory/70 mb-2">24/7 Guest Services</p>
-              <a href="tel:+18001234567" className="text-g7-gold hover:underline">
-                +1 800 123 4567
+              <a href="tel:+919491708080" className="text-g7-gold hover:underline">
+                +91 94917 08080
               </a>
             </div>
             <div className="text-center">
@@ -220,8 +220,8 @@ export default function HelpPage() {
               </div>
               <h3 className="font-semibold mb-2">Email Us</h3>
               <p className="text-sm text-g7-ivory/70 mb-2">Response within 24 hours</p>
-              <a href="mailto:support@g7hotels.com" className="text-g7-gold hover:underline">
-                support@g7hotels.com
+              <a href="mailto:support@g7hotels.in" className="text-g7-gold hover:underline">
+                support@g7hotels.in
               </a>
             </div>
             <div className="text-center">

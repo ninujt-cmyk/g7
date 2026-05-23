@@ -82,8 +82,8 @@ export async function PATCH(
     if (body.gallery !== undefined) updateData.gallery = body.gallery;
     if (body.featured !== undefined) updateData.featured = body.featured;
     if (body.status !== undefined) {
-      updateData.status = body.status;
-      if (body.status === 'published' && !existingPost.publishedAt) {
+      updateData.status = body.status.toUpperCase();
+      if (body.status.toLowerCase() === 'published' && !existingPost.publishedAt) {
         updateData.publishedAt = new Date();
       }
     }

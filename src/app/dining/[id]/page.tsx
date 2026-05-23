@@ -479,18 +479,18 @@ export default function RestaurantDetailPage() {
                     <h4 className="font-medium text-g7-charcoal mb-3">Contact</h4>
                     <div className="space-y-3">
                       <a
-                        href="tel:+18001234567"
+                        href="tel:+919491708080"
                         className="flex items-center gap-3 text-g7-charcoal/70 hover:text-g7-gold"
                       >
                         <Phone className="h-5 w-5" />
-                        <span>+1 800 123 4567</span>
+                        <span>+91 94917 08080</span>
                       </a>
                       <a
-                        href="mailto:dining@g7hotels.com"
+                        href="mailto:dining@g7hotels.in"
                         className="flex items-center gap-3 text-g7-charcoal/70 hover:text-g7-gold"
                       >
                         <Mail className="h-5 w-5" />
-                        <span>dining@g7hotels.com</span>
+                        <span>dining@g7hotels.in</span>
                       </a>
                     </div>
                   </div>

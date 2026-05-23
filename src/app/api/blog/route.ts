@@ -7,7 +7,8 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const category = searchParams.get('category');
     const tag = searchParams.get('tag');
-    const status = searchParams.get('status') || 'published';
+    const statusParam = searchParams.get('status') || 'published';
+    const status = statusParam.toUpperCase();
     const featured = searchParams.get('featured');
     const search = searchParams.get('search');
     const limit = parseInt(searchParams.get('limit') || '12');
@@ -135,14 +136,14 @@ export async function POST(request: NextRequest) {
         tags: body.tags || [],
         featuredImage: body.featuredImage || '',
         gallery: body.gallery || [],
-        publishedAt: body.status === 'published' ? new Date() : null,
+        publishedAt: body.status?.toLowerCase() === 'published' ? new Date() : null,
         updatedAt: new Date(),
         seo: body.seo || {
           metaTitle: body.title,
           metaDescription: body.excerpt || '',
           keywords: [],
         },
-        status: body.status || 'draft',
+        status: (body.status || 'draft').toUpperCase(),
       },
     });
 

@@ -466,24 +466,24 @@ export default function RoomDetailPage() {
                     </h3>
                     <div className="space-y-3">
                       <a
-                        href="tel:+18001234567"
+                        href="tel:+919491708080"
                         className="flex items-center gap-3 text-g7-charcoal/70 hover:text-g7-gold transition-colors"
                       >
                         <Phone className="h-5 w-5" />
                         <div>
                           <p className="text-xs text-g7-charcoal/60">Call us</p>
-                          <p className="font-medium">+1 800 123 4567</p>
+                          <p className="font-medium">+91 94917 08080</p>
                         </div>
                       </a>
                       <a
-                        href="mailto:reservations@g7hotels.com"
+                        href="mailto:reservations@g7hotels.in"
                         className="flex items-center gap-3 text-g7-charcoal/70 hover:text-g7-gold transition-colors"
                       >
                         <Mail className="h-5 w-5" />
                         <div>
                           <p className="text-xs text-g7-charcoal/60">Email us</p>
                           <p className="font-medium text-sm">
-                            reservations@g7hotels.com
+                            reservations@g7hotels.in
                           </p>
                         </div>
                       </a>

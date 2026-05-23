@@ -42,7 +42,7 @@ const mockBookings: Booking[] = [
   {
     id: '1',
     confirmationNumber: 'G7-847392',
-    hotelName: 'G7 Hotels New York',
+    hotelName: 'G7 Hotels Tirupati',
     roomType: 'Presidential Suite',
     checkIn: new Date('2024-03-15'),
     checkOut: new Date('2024-03-18'),
@@ -54,7 +54,7 @@ const mockBookings: Booking[] = [
   {
     id: '2',
     confirmationNumber: 'G7-748291',
-    hotelName: 'G7 Hotels Mumbai',
+    hotelName: 'G7 Hotels Srikalahasti',
     roomType: 'Royal Suite',
     checkIn: new Date('2024-02-10'),
     checkOut: new Date('2024-02-12'),
@@ -66,7 +66,7 @@ const mockBookings: Booking[] = [
   {
     id: '3',
     confirmationNumber: 'G7-639284',
-    hotelName: 'G7 Hotels Delhi',
+    hotelName: 'G7 Hotels Rayalaseema',
     roomType: 'Deluxe Room',
     checkIn: new Date('2024-04-20'),
     checkOut: new Date('2024-04-22'),

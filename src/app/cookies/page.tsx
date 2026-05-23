@@ -112,10 +112,10 @@ export default function CookiesPage() {
                   To manage cookies through your browser:
                 </p>
                 <ul className="list-disc pl-6 text-g7-charcoal/70 space-y-2">
-                  <li><strong>Chrome:</strong> Settings > Privacy and security > Cookies and other site data</li>
-                  <li><strong>Firefox:</strong> Options > Privacy & Security > Cookies and Site Data</li>
-                  <li><strong>Safari:</strong> Preferences > Privacy > Manage Website Data</li>
-                  <li><strong>Edge:</strong> Settings > Cookies and site permissions</li>
+                  <li><strong>Chrome:</strong> Settings &gt; Privacy and security &gt; Cookies and other site data</li>
+                  <li><strong>Firefox:</strong> Options &gt; Privacy &amp; Security &gt; Cookies and Site Data</li>
+                  <li><strong>Safari:</strong> Preferences &gt; Privacy &gt; Manage Website Data</li>
+                  <li><strong>Edge:</strong> Settings &gt; Cookies and site permissions</li>
                 </ul>
               </section>
 

@@ -20,9 +20,9 @@ const fadeInUp = {
 };
 
 const contactInfo = {
-  address: '123 Luxury Lane, Mumbai 400001, Maharashtra, India',
-  phone: '+91 22 1234 5678',
-  email: 'reservations@g7hotels.com',
+  address: 'Flagship Property / Tirupati, Merlapaka tollplaza, yerpedu, Srikalahasti, Andhra Pradesh 517619',
+  phone: '+91 81860 15167',
+  email: 'reservations@g7hotels.in',
   hours: {
     reception: '24 Hours',
     reservations: '9:00 AM - 9:00 PM IST',
@@ -32,20 +32,20 @@ const contactInfo = {
 };
 
 const departments = [
-  { id: 'reservations', label: 'Reservations', email: 'reservations@g7hotels.com' },
-  { id: 'events', label: 'Events & Weddings', email: 'events@g7hotels.com' },
-  { id: 'spa', label: 'Spa & Wellness', email: 'spa@g7hotels.com' },
-  { id: 'dining', label: 'Dining & Restaurants', email: 'dining@g7hotels.com' },
-  { id: 'loyalty', label: 'Loyalty Program', email: 'loyalty@g7hotels.com' },
-  { id: 'feedback', label: 'Feedback & Suggestions', email: 'feedback@g7hotels.com' },
-  { id: 'careers', label: 'Careers', email: 'careers@g7hotels.com' },
-  { id: 'media', label: 'Media & Press', email: 'media@g7hotels.com' }
+  { id: 'reservations', label: 'Reservations', email: 'reservations@g7hotels.in' },
+  { id: 'events', label: 'Events & Weddings', email: 'events@g7hotels.in' },
+  { id: 'spa', label: 'Spa & Wellness', email: 'spa@g7hotels.in' },
+  { id: 'dining', label: 'Dining & Restaurants', email: 'dining@g7hotels.in' },
+  { id: 'loyalty', label: 'Loyalty Program', email: 'loyalty@g7hotels.in' },
+  { id: 'feedback', label: 'Feedback & Suggestions', email: 'feedback@g7hotels.in' },
+  { id: 'careers', label: 'Careers', email: 'careers@g7hotels.in' },
+  { id: 'media', label: 'Media & Press', email: 'media@g7hotels.in' }
 ];
 
 const faqs = [
   {
     question: 'How do I make a reservation?',
-    answer: 'You can make a reservation through our website using the booking widget, by calling our reservations team at +91 22 1234 5678, or by email at reservations@g7hotels.com. Our online booking system is available 24/7.'
+    answer: 'You can make a reservation through our website using the booking widget, by calling our reservations team at +91 81860 15167, or by email at reservations@g7hotels.in. Our online booking system is available 24/7.'
   },
   {
     question: 'What is your cancellation policy?',
@@ -339,14 +339,22 @@ export default function ContactPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-[#1A1A1A]/80 leading-relaxed">{contactInfo.address}</p>
-                  <div className="mt-4 h-48 bg-[#1A1A1A]/5 rounded-lg flex items-center justify-center">
-                    <div className="text-center text-[#1A1A1A]/40">
-                      <MapPin className="w-12 h-12 mx-auto mb-2" />
-                      <p className="text-sm">Interactive Map</p>
-                    </div>
+                  <div className="mt-4 h-48 w-full overflow-hidden rounded-lg shadow-inner border border-g7-gold/20">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3877.014283852086!2d79.5714777!3d13.6582522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a4f0fd629adbf7b%3A0x334c9c104443efcf!2sMerlapaka%20Toll%20Plaza!5e0!3m2!1sen!2sin!4v1716460000000!5m2!1sen!2sin"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen={true}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="grayscale hover:grayscale-0 transition-all duration-500"
+                    />
                   </div>
-                  <Button variant="link" className="text-[#C9A45C] mt-4 px-0">
-                    Get Directions →
+                  <Button variant="link" className="text-[#C9A45C] mt-4 px-0" asChild>
+                    <a href="https://maps.app.goo.gl/ZwsPen2L5EuhwKBC8" target="_blank" rel="noopener noreferrer">
+                      Get Directions →
+                    </a>
                   </Button>
                 </CardContent>
               </Card>

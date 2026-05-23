@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Spa, Clock, Award, Calendar, Filter, Grid, List } from 'lucide-react';
+import { Clock, Award, Calendar, Filter, Grid, List } from 'lucide-react';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { PageHero } from '@/components/common/HeroSection';

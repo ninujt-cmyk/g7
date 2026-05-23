@@ -209,11 +209,11 @@ export function Footer() {
                 <MapPin className="h-5 w-5 text-g7-gold" />
               </div>
               <div>
-                <h5 className="font-medium mb-2">Our Location</h5>
+                <h5 className="font-medium mb-2">Global Headquarters / Tirupati</h5>
                 <p className="text-g7-ivory/70 text-sm leading-relaxed">
-                  123 Luxury Avenue<br />
-                  Downtown District<br />
-                  New York, NY 10001
+                  Merlapaka tollplaza, yerpedu<br />
+                  Srikalahasti, Andhra Pradesh<br />
+                  Pin Code: 517619
                 </p>
               </div>
             </div>
@@ -224,8 +224,8 @@ export function Footer() {
               <div>
                 <h5 className="font-medium mb-2">Contact Us</h5>
                 <p className="text-g7-ivory/70 text-sm leading-relaxed">
-                  <a href="tel:+18001234567" className="hover:text-g7-gold transition-colors">
-                    +1 800 123 4567
+                  <a href="tel:+919491708080" className="hover:text-g7-gold transition-colors">
+                    +91 94917 08080
                   </a>
                   <br />
                   <span className="text-xs">24/7 Guest Services</span>
@@ -239,12 +239,12 @@ export function Footer() {
               <div>
                 <h5 className="font-medium mb-2">Email Us</h5>
                 <p className="text-g7-ivory/70 text-sm leading-relaxed">
-                  <a href="mailto:reservations@g7hotels.com" className="hover:text-g7-gold transition-colors">
-                    reservations@g7hotels.com
+                  <a href="mailto:reservations@g7hotels.in" className="hover:text-g7-gold transition-colors">
+                    reservations@g7hotels.in
                   </a>
                   <br />
-                  <a href="mailto:concierge@g7hotels.com" className="hover:text-g7-gold transition-colors">
-                    concierge@g7hotels.com
+                  <a href="mailto:concierge@g7hotels.in" className="hover:text-g7-gold transition-colors">
+                    concierge@g7hotels.in
                   </a>
                 </p>
               </div>

@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "G7 Hotels | Luxury Hotels & Fine Dining",
     description: "Experience timeless luxury at G7 Hotels. World-class accommodations, exquisite dining, and unforgettable experiences await.",
-    url: "https://g7hotels.com",
+    url: "https://g7hotels.in",
     siteName: "G7 Hotels",
     locale: "en_US",
     type: "website",

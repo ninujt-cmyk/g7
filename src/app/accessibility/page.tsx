@@ -5,7 +5,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { PageHero } from '@/components/common/HeroSection';
 import { Card, CardContent } from '@/components/ui/card';
-import { Phone, Mail, Wheelchair, Eye, Ear, Brain } from 'lucide-react';
+import { Phone, Mail, Accessibility, Eye, Ear, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 /**
@@ -33,7 +33,7 @@ export default function AccessibilityPage() {
           {/* Commitment Statement */}
           <Card className="p-8 md:p-12 mb-8 border-g7-gold/30">
             <div className="text-center mb-8">
-              <Wheelchair className="h-16 w-16 mx-auto text-g7-gold mb-4" />
+              <Accessibility className="h-16 w-16 mx-auto text-g7-gold mb-4" />
               <h2 className="font-serif text-3xl text-g7-charcoal mb-4">
                 Accessibility at G7 Hotels
               </h2>
@@ -65,7 +65,7 @@ export default function AccessibilityPage() {
             </h3>
             <div className="space-y-4 text-g7-charcoal/70">
               <p className="leading-relaxed">
-                We have designed g7hotels.com to be accessible to users with disabilities. Our website includes features such as:
+                We have designed g7hotels.in to be accessible to users with disabilities. Our website includes features such as:
               </p>
               <ul className="list-disc pl-6 space-y-2">
                 <li>Alternative text for images</li>
@@ -86,7 +86,7 @@ export default function AccessibilityPage() {
           {/* Hotel Accessibility */}
           <Card className="p-8 mb-8">
             <h3 className="font-serif text-2xl text-g7-charcoal mb-6 flex items-center gap-3">
-              <Wheelchair className="h-6 w-6 text-g7-gold" />
+              <Accessibility className="h-6 w-6 text-g7-gold" />
               Hotel Facilities & Services
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -179,15 +179,15 @@ export default function AccessibilityPage() {
               <div className="text-center">
                 <Phone className="h-8 w-8 mx-auto mb-3 text-g7-gold" />
                 <p className="font-semibold mb-1">Accessibility Hotline</p>
-                <a href="tel:+18001234567" className="text-g7-gold hover:underline">
-                  +1 800 123 4567
+                <a href="tel:+919491708080" className="text-g7-gold hover:underline">
+                  +91 94917 08080
                 </a>
               </div>
               <div className="text-center">
                 <Mail className="h-8 w-8 mx-auto mb-3 text-g7-gold" />
                 <p className="font-semibold mb-1">Email</p>
-                <a href="mailto:accessibility@g7hotels.com" className="text-g7-gold hover:underline">
-                  accessibility@g7hotels.com
+                <a href="mailto:accessibility@g7hotels.in" className="text-g7-gold hover:underline">
+                  accessibility@g7hotels.in
                 </a>
               </div>
               <div className="text-center">
