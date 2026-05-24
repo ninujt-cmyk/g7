@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
@@ -94,7 +94,7 @@ const allAmenities = [
   'Work Desk',
 ];
 
-export default function RoomsPage() {
+function RoomsPageContent() {
   const searchParams = useSearchParams();
   const [rooms, setRooms] = useState<Room[]>([]);
   const [loading, setLoading] = useState(true);
@@ -546,5 +546,20 @@ export default function RoomsPage() {
 
       <Footer />
     </div>
+  );
+}
+
+export default function RoomsPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-g7-ivory">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-g7-gold border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-g7-charcoal/70 font-medium">Loading luxury accommodations...</p>
+        </div>
+      </div>
+    }>
+      <RoomsPageContent />
+    </Suspense>
   );
 }
