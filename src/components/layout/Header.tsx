@@ -220,11 +220,12 @@ export function Header() {
                 transition={{ duration: 0.3 }}
                 className="flex items-center gap-3"
               >
-                <div className="relative w-12 h-12 flex items-center justify-center">
-                  <div className="absolute inset-0 border-2 border-g7-gold rotate-45"></div>
-                  <span className="font-serif text-2xl font-bold text-g7-gold relative z-10">
-                    G7
-                  </span>
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border border-g7-gold/30 bg-g7-charcoal flex items-center justify-center">
+                  <img
+                    src="/logo.jpg"
+                    alt="G7 Logo"
+                    className="w-full h-full object-cover scale-[1.15]"
+                  />
                 </div>
                 <div className={cn(
                   'hidden sm:block transition-colors duration-300',

@@ -144,11 +144,12 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-6">
               <div className="flex items-center gap-3">
-                <div className="relative w-10 h-10 flex items-center justify-center">
-                  <div className="absolute inset-0 border-2 border-g7-gold rotate-45"></div>
-                  <span className="font-serif text-xl font-bold text-g7-gold relative z-10">
-                    G7
-                  </span>
+                <div className="relative w-10 h-10 rounded-full overflow-hidden border border-g7-gold/30 bg-g7-charcoal flex items-center justify-center">
+                  <img
+                    src="/logo.jpg"
+                    alt="G7 Logo"
+                    className="w-full h-full object-cover scale-[1.15]"
+                  />
                 </div>
                 <div>
                   <h3 className="font-serif text-xl font-light tracking-wide leading-none">
