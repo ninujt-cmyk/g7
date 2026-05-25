@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Image from 'next/image';
 import { format } from 'date-fns';
+import Link from 'next/link';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -439,9 +440,11 @@ export default function JournalPage() {
                           <p className="text-xs text-[#1A1A1A]/60">{featuredPost.author.bio}</p>
                         </div>
                       </div>
-                      <Button variant="ghost" className="text-[#C9A45C] hover:text-[#C9A45C]/80">
-                        Read More
-                        <ArrowRight className="w-4 h-4 ml-2" />
+                      <Button asChild variant="ghost" className="text-[#C9A45C] hover:text-[#C9A45C]/80">
+                        <Link href={`/journal/${featuredPost.slug}`}>
+                          Read More
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Link>
                       </Button>
                     </div>
                   </div>
@@ -560,9 +563,11 @@ export default function JournalPage() {
                         />
                         <span className="text-sm text-[#1A1A1A]/80">{post.author.name}</span>
                       </div>
-                      <Button variant="ghost" size="sm" className="text-[#C9A45C] hover:text-[#C9A45C]/80">
-                        Read
-                        <ArrowRight className="w-4 h-4 ml-1" />
+                      <Button asChild variant="ghost" size="sm" className="text-[#C9A45C] hover:text-[#C9A45C]/80">
+                        <Link href={`/journal/${post.slug}`}>
+                          Read
+                          <ArrowRight className="w-4 h-4 ml-1" />
+                        </Link>
                       </Button>
                     </div>
                   </CardFooter>
