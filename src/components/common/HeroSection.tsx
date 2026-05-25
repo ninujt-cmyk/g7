@@ -58,6 +58,7 @@ export function HeroSection({
           alt="G7 Hotels Luxury Experience"
           className="w-full h-full object-cover"
           loading="eager"
+          fetchPriority="high"
         />
       </motion.div>
 
@@ -194,6 +195,8 @@ export function PageHero({
         src={backgroundImage}
         alt={title}
         className="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+        fetchPriority="high"
       />
 
       <div className="relative z-20 container mx-auto px-4 text-center">

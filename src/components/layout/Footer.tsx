@@ -149,6 +149,7 @@ export function Footer() {
                     src="/logo.jpg"
                     alt="G7 Logo"
                     className="w-full h-full object-cover scale-[1.15]"
+                    loading="lazy"
                   />
                 </div>
                 <div>
